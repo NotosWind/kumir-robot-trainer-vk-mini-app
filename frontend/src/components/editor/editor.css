@@ -1,0 +1,19 @@
+.tabs { display: flex; align-items: center; border-bottom: 1px solid #eee; }
+.tabs .tab { flex: 1; text-align: center; padding: 9px; font-weight: 600; color: #7a7a7a; background: none; border: none; cursor: pointer; }
+.tabs .tab.act { color: #5181b8; box-shadow: inset 0 -2px 0 #5181b8; }
+.tabs .expand { padding: 7px 11px; color: #5181b8; font-size: 16px; background: none; border: none; cursor: pointer; }
+
+.code-area { width: 100%; box-sizing: border-box; min-height: 160px; padding: 12px 14px;
+  background: #1e1f29; color: #cfd3db; font-family: ui-monospace, Consolas, monospace;
+  font-size: 13px; line-height: 1.7; border: none; resize: vertical; }
+.code-area.full { min-height: 70vh; }
+.parse-error { color: #c0392b; font-size: 13px; padding: 6px 14px; }
+
+.controls { display: flex; gap: 10px; padding: 12px 14px; }
+.controls .btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 10px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; }
+.controls .btn .ic { font-size: 18px; line-height: 1; }
+.controls .btn .lb { font-size: 12px; line-height: 1; }
+.controls .btn.run { background: #4bb34b; color: #fff; }
+.controls .btn.step, .controls .btn.reset { background: #eef1f6; color: #33414f; }
+.controls .btn:disabled { opacity: 0.5; cursor: default; }

@@ -1,0 +1,12 @@
+.map { max-width: 560px; margin: 0 auto; }
+.map-head { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; background: #5181b8; color: #fff; font-weight: 700; }
+.map-stars { font-weight: 700; }
+.map-list { display: flex; flex-direction: column; gap: 10px; padding: 16px; }
+.map-node { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; border: 1px solid #e3e6ea; background: #fff; cursor: pointer; text-align: left; width: 100%; }
+.map-node:disabled { opacity: 0.55; cursor: default; }
+.map-node .idx { width: 30px; height: 30px; border-radius: 50%; background: #eef1f6; color: #33414f; display: flex; align-items: center; justify-content: center; font-weight: 700; flex: 0 0 auto; }
+.map-node.done .idx { background: #4bb34b; color: #fff; }
+.map-node .meta { flex: 1; }
+.map-node .meta h3 { margin: 0; font-size: 15px; }
+.map-node .stars { letter-spacing: 1px; font-size: 14px; }
+.map-node .lock { font-size: 16px; color: #9aa3ad; }

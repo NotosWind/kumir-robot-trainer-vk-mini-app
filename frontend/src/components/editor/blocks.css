@@ -1,0 +1,15 @@
+.block-editor { padding: 12px 14px; background: #fbfbfd; min-height: 140px; }
+.blk-body { margin-left: 16px; border-left: 2px dashed #d7deea; padding-left: 8px; }
+.blk-group { margin: 4px 0; }
+.blk { display: inline-flex; align-items: center; gap: 8px; border-radius: 7px; padding: 6px 10px; margin: 4px 0; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; }
+.blk.cmd { background: #4a8fe7; }
+.blk.kw { background: #e8833a; }
+.blk.kw.sub { background: #d9772f; }
+.blk.sel { outline: 2px solid #1e1f29; }
+.blk .cond-select { font-size: 12px; border-radius: 5px; border: none; padding: 2px 4px; }
+.blk .count-input { width: 44px; font-size: 13px; font-weight: 700; border: none; border-radius: 5px; padding: 2px 4px; text-align: center; }
+.blk-del { background: rgba(0,0,0,.25); color: #fff; border: none; border-radius: 50%; width: 18px; height: 18px; cursor: pointer; }
+.palette { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+.palette .chip { border-radius: 14px; padding: 4px 10px; font-size: 12px; font-weight: 600; color: #fff; border: none; cursor: pointer; }
+.palette .chip.cmd { background: #4a8fe7; }
+.palette .chip.kw { background: #e8833a; }

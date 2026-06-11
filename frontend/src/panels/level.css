@@ -1,0 +1,14 @@
+.level { max-width: 1100px; margin: 0 auto; }
+.level-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #5181b8; color: #fff; font-weight: 600; }
+.level-goal { padding: 10px 14px; font-size: 14px; color: #33414f; background: #f7f8fa; }
+.level-head .back { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; padding: 0 8px 0 0; }
+.level-intro { padding: 10px 14px; font-size: 13px; line-height: 1.5; color: #2c3b49; background: #eef5ff; border-bottom: 1px solid #d8e6f7; }
+.level-body { display: flex; flex-direction: column; }
+.field-wrap { padding: 14px; display: flex; justify-content: center; background: #f7f8fa; }
+.field-wrap .field-svg { max-width: 360px; }
+.editor-wrap { background: #fbfbfd; }
+@media (min-width: 900px) {
+  .level-body { flex-direction: row; align-items: flex-start; }
+  .level-body > .field-wrap { flex: 1; position: sticky; top: 0; }
+  .level-body > .editor-wrap { flex: 1; }
+}

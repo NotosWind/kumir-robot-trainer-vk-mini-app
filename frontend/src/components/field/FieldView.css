@@ -1,0 +1,7 @@
+.field-svg { width: 100%; height: auto; display: block; background: #fff; touch-action: none; }
+.field-svg rect.cell { fill: #fff; stroke: #e7e7e7; stroke-width: 1; }
+.field-svg rect.painted { fill: #9ec7f0; }
+.field-svg rect.target { fill: url(#hatch); }
+.field-svg line.wall { stroke: #2b2b2b; stroke-width: 4; stroke-linecap: round; }
+.field-svg rect.border { fill: none; stroke: #2b2b2b; stroke-width: 4; }
+.field-svg .crash { fill: #e8553a; opacity: 0.5; }
