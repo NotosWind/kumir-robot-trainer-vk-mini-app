@@ -53,6 +53,30 @@ describe('sessionReducer', () => {
     expect(s.result?.stars).toBe(3)
   })
 
+  it('step lazily computes frames (without playing) and advances one frame', () => {
+    let s = initialSession(corridor)
+    s = sessionReducer(s, { type: 'setMode', mode: 'code' })
+    s = sessionReducer(s, { type: 'setCode', code: solutionCode })
+    s = sessionReducer(s, { type: 'step' })
+    expect(s.run.frames.length).toBeGreaterThan(0)
+    expect(s.run.index).toBe(0)
+    expect(s.run.playing).toBe(false)
+    s = sessionReducer(s, { type: 'step' })
+    expect(s.run.index).toBe(1)
+    expect(s.run.playing).toBe(false)
+  })
+
+  it('stepping past the last frame produces a result', () => {
+    let s = initialSession(corridor)
+    s = sessionReducer(s, { type: 'setMode', mode: 'code' })
+    s = sessionReducer(s, { type: 'setCode', code: solutionCode })
+    s = sessionReducer(s, { type: 'step' })
+    const total = s.run.frames.length
+    for (let i = 0; i <= total; i += 1) s = sessionReducer(s, { type: 'step' })
+    expect(s.result).toBeDefined()
+    expect(s.result?.stars).toBe(3)
+  })
+
   it('reset clears run state', () => {
     let s = initialSession(corridor)
     s = sessionReducer(s, { type: 'setMode', mode: 'code' })

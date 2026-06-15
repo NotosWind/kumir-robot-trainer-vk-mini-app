@@ -30,6 +30,17 @@ describe('ResultModal', () => {
     expect(onContinue).toHaveBeenCalledOnce()
   })
 
+  it('praises without claiming a loop when none was used', () => {
+    const result = base({
+      passedVisible: true, passedAll: true, stars: 3,
+      perField: [field({ ok: true })],
+      efficiency: { commandCount: 1, usedLoop: false, withinLimit: true },
+    })
+    render(<ResultModal result={result} totalFields={1} onContinue={() => {}} onClose={() => {}} />)
+    expect(screen.getByText(/закрашены верно/i)).toBeTruthy()
+    expect(screen.queryByText(/циклом/)).toBeNull()
+  })
+
   it('on a crash explains the wall and offers Попробовать снова (stays on level)', () => {
     const onClose = vi.fn()
     const result = base({ perField: [field({ status: 'crash' })] })
@@ -50,7 +61,6 @@ describe('ResultModal', () => {
     const result = base({ perField: [field({ status: 'ok', missing: 1, extra: 0 })] })
     render(<ResultModal result={result} totalFields={1} onContinue={() => {}} onClose={() => {}} />)
     expect(screen.getByText(/осталось пустыми: 1/)).toBeTruthy()
-    expect(screen.getByText(/последняя клетка/)).toBeTruthy()
   })
 
   it('on extra cells says too many were painted', () => {

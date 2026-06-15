@@ -65,7 +65,7 @@ export function LevelPanel({ level, onExit, onSolved }: LevelPanelProps) {
           <RunControls
             playing={state.run.playing}
             onRun={() => dispatch({ type: 'run' })}
-            onStep={() => dispatch({ type: 'tick' })}
+            onStep={() => dispatch({ type: 'step' })}
             onReset={() => dispatch({ type: 'reset' })}
           />
         </div>

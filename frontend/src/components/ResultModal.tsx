@@ -36,8 +36,11 @@ export function ResultModal({ result, totalFields, onContinue, onClose }: Result
         {solved ? (
           <>
             <div style={{ fontSize: 30 }}>{stars}</div>
-            {result.passedAll && result.efficiency.withinLimit && (
+            {result.passedAll && result.efficiency.withinLimit && result.efficiency.usedLoop && (
               <p>Отлично! Решено на всех полях, коротко и с циклом 🎉</p>
+            )}
+            {result.passedAll && result.efficiency.withinLimit && !result.efficiency.usedLoop && (
+              <p>Отлично! Все клетки закрашены верно 🎉</p>
             )}
             {result.passedAll && !result.efficiency.withinLimit && (
               <p>Работает на всех полях! Чтобы получить третью звезду, реши короче — с циклом и без лишних команд.</p>

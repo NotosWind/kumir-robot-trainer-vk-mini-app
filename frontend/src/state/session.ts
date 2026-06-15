@@ -28,6 +28,7 @@ export type SessionAction =
   | { type: 'setCode'; code: string }
   | { type: 'run' }
   | { type: 'tick' }
+  | { type: 'step' }
   | { type: 'finishRun' }
   | { type: 'reset' }
   | { type: 'closeResult' }
@@ -81,6 +82,32 @@ export function sessionReducer(state: SessionState, action: SessionAction): Sess
       const next = state.run.index + 1
       if (next >= state.run.frames.length) return { ...state, run: { ...state.run, playing: false } }
       return { ...state, run: { ...state.run, index: next } }
+    }
+    case 'step': {
+      // Manual step-through: lazily compute frames (without auto-playing), then
+      // advance one frame. When stepping past the last frame, evaluate the result.
+      let s = state
+      if (s.run.status === 'idle' || s.run.frames.length === 0) {
+        const resolved = resolveProgram(s)
+        if (!resolved.ok) {
+          return { ...s, parseError: { message: resolved.message, line: resolved.line }, run: { ...IDLE_RUN } }
+        }
+        const result = run(resolved.program, s.level.fields[0], { recordFrames: true })
+        s = {
+          ...s,
+          program: resolved.program,
+          parseError: undefined,
+          result: undefined,
+          run: { frames: result.frames ?? [], index: -1, status: result.status, playing: false },
+        }
+      }
+      const next = s.run.index + 1
+      if (next >= s.run.frames.length) {
+        const resolved = resolveProgram(s)
+        const result = resolved.ok ? check(resolved.program, s.level) : undefined
+        return { ...s, run: { ...s.run, playing: false }, result }
+      }
+      return { ...s, run: { ...s.run, index: next } }
     }
     case 'finishRun': {
       const resolved = resolveProgram(state)
