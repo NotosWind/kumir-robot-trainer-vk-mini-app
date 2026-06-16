@@ -4,7 +4,7 @@ import '@vkontakte/vkui/dist/vkui.css'
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <ConfigProvider>
+    <ConfigProvider colorScheme="light">
       <AdaptivityProvider>
         <AppRoot>{children}</AppRoot>
       </AdaptivityProvider>

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import './index.css'
 import { bridge } from './app/bridge'
 import { AppProviders } from './app/providers'
 import App from './App'
